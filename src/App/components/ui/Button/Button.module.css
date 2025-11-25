@@ -1,0 +1,20 @@
+.Button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+
+    box-shadow: 25px 25px 25px goldenrod;
+
+    margin-bottom: 24px;
+
+    font-weight: 900;
+    text-decoration: underline;
+
+    background-color: skyblue;
+    color: firebrick;
+}
+
+.Button:hover {
+    border: 2px solid darkorchid;
+    box-shadow: 15px 15px 25px gray;
+}
