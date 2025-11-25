@@ -1,5 +1,6 @@
 import type React from "react";
 import style from "./Button.module.css";
+import { useEffect, useState } from "react";
 
 interface IButtonProps {
   color?: string;
@@ -9,13 +10,26 @@ interface IButtonProps {
 }
 
 const Button = ({ children, color, type = "button", onButtonClick }: IButtonProps) => {
+  
+  const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isClicked) { 
+        setIsClicked(false)
+      }
+    }, 250);
+  
+  }, [isClicked])
+  
   return (
     <button 
       type={ type } 
       style={{ backgroundColor: color }} 
-      className={style.Button}
+      className={style.Button+(isClicked?' '+style.clicked:'')}
       onClick={()=>{
-        onButtonClick();
+        onButtonClick();        
+        setIsClicked(true);
       }}>
       {children}
     </button>

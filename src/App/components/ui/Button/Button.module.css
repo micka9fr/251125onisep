@@ -18,3 +18,8 @@
     border: 2px solid darkorchid;
     box-shadow: 15px 15px 25px gray;
 }
+
+.Button.clicked {
+    border: 5px solid red;
+    box-shadow: 5px 5px 25px gray;
+}
