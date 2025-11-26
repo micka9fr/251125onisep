@@ -1,42 +1,28 @@
-import { useEffect, useState } from 'react';
-import './App.css'
-import Button from './components/ui/Button/Button.tsx'
+import "./App.css";
+import FlexH1stGrow from "./components/layout/FlexH1stGrow/FlexH1stGrow";
+import FlexV3rdGrow from "./components/layout/FlexV3rdGrow/FlexV3rdGrow";
+import MemeForm from "./components/MemeForm/MemeForm";
+import Footer from "./components/ui/Footer/Footer";
+import Header from "./components/ui/Header/Header";
+import {emptyMeme, MemeSVGViewer} from "orsys-tjs-meme";
+
+
+import Navbar from "./components/ui/Navbar/Navbar";
 
 function App() {
-
-  const [counter, setCounter] = useState(-1);  
-
-  useEffect(() => {
-    console.log('dans le useEffect : ', counter);
-    return () => {
-      //fonction demontage
-    };
-
-  }, [counter]);
-  
-  useEffect(() => {setCounter(0)}, []);
-
-  return ( 
-    <div>
-      <b>GUTEN TAG !!!</b>
-      <div>counter{counter}</div> 
-      <Button 
-        children="prout" 
-        function={ console.log('YOLO !!!!!!!') } />
-      <Button />
-      <Button color="green" />
-      <Button color="green" onButtonClick={()=>{
-        setCounter(counter -1);
-        console.log(counter -1);
-
-      }}>-1</Button>
-      <Button color="green" onButtonClick={()=>{
-        setCounter(counter +1);
-        console.log(counter +1);
-      }}>+2</Button>
-      <Button onButtonClick= {() =>console.log("click")} />  
+  return (
+    <div className="App">
+      <FlexV3rdGrow>
+        <Header />
+        <Navbar />
+        <FlexH1stGrow>
+          <MemeSVGViewer image={undefined} meme={emptyMeme} basePath=""/>
+          <MemeForm/>
+        </FlexH1stGrow>
+        <Footer />
+      </FlexV3rdGrow>
     </div>
   );
 }
 
-export default App
+export default App;

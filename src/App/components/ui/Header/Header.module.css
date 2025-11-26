@@ -1,0 +1,14 @@
+.Header {
+    font-size: xx-large;
+    font-weight: 900;
+    color: tomato;
+    text-decoration: gray underline;
+}
+.dot{
+    color: grey;
+    font-size: 34pt;
+}
+.js{
+    color: skyblue;
+    font-style: italic;
+}
