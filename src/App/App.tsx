@@ -16,6 +16,8 @@ function App() {
 
   const [images, setImages] = useState<Array<ImageInterface>>([]);
 
+
+
   useEffect(()=>{
     fetch(`${REST_ADR}${REST_RESSOURCES.images}`).then(r=>r.json()).then(arr=>setImages(arr))
   }) 
@@ -27,7 +29,7 @@ function App() {
         <Navbar />
         <FlexH1stGrow>
           <MemeSVGViewer image={images.find((img)=>img.id===current.imageId)} meme={current} basePath=""/>
-          <MemeForm meme={current} onMemeChange={meme=>setCurrent(meme)}/>
+          <MemeForm meme={current} onMemeChange={meme=>setCurrent(meme)} images={images}/>
         </FlexH1stGrow>
         <Footer />
       </FlexV3rdGrow>

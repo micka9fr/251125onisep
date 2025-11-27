@@ -1,15 +1,16 @@
 import React, { useEffect, usememe } from "react";
 import styles from "./MemeForm.module.css";
-import type { MemeInterface } from "orsys-tjs-meme";
+import type { ImageInterface, MemeInterface } from "orsys-tjs-meme";
 
 interface IMemeFormProps {
   meme: MemeInterface;
   onMemeChange: (meme:MemeInterface)=>void;
+  images: array <mageInterface>;
 }
 
-const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
+const MemeForm: React.FC<IMemeFormProps> = ({ meme, images, onMemeChange }) => {
  
-  const onNumberChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const onNumberChange = (evt: React.ChangeEvent<HTMLInputElement|HTMLSelectElement>) => {
     const s = { ...meme };
     s[evt.target.name] = parseInt(evt.target.value);
     onMemeChange(s);
@@ -45,11 +46,11 @@ const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
           <h2>Image</h2>
         </label>
         <br />
-        <select name="image" id="image">
-          <option value="1">futurama1.jpg</option>
-          <option value="2">futurama2.png</option>
-          <option value="3">futurama3.png</option>
-          <option value="4">gwenadu.jpg</option>
+        <select name="imageId" id="image" onChange={onNumberChange}>
+          <option value="-1">no image</option>
+          {
+            images.map(img=><option key={img.id} value={img.id}>{img.name}</option>)
+          }          
         </select>
         <hr />
         <label htmlFor="text">
