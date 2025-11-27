@@ -1,14 +1,13 @@
 import "./App.css";
 import "./store/store.js";
-import FlexH1stGrow from "./components/layout/FlexH1stGrow/FlexH1stGrow";
 import FlexV3rdGrow from "./components/layout/FlexV3rdGrow/FlexV3rdGrow";
-import MemeForm from "./components/MemeForm/MemeForm.connected";
 import Footer from "./components/ui/Footer/Footer";
 import Header from "./components/ui/Header/Header";
-
-import MemeSVGViewer from "./components/ui/MemeSVGViewver/MemeSVGViewver.connected";
-
 import Navbar from "./components/ui/Navbar/Navbar";
+import { Route, Routes } from "react-router";
+import Editor from "./pages/Editor.js";
+import Home from "./pages/Home.js";
+import Thumbnail from "./pages/Thumbnail.js";
 
 
 function App() {
@@ -17,10 +16,12 @@ function App() {
       <FlexV3rdGrow>
         <Header />
         <Navbar />
-        <FlexH1stGrow>
-          <MemeSVGViewer />
-          <MemeForm/>
-        </FlexH1stGrow>
+        <Routes>
+          <Route path="/" Component={Home}/>
+          <Route path="/Editor" Component={Editor}/>
+          <Route path="/Edit/:id" Component={Editor}/>
+          <Route path="/Thumbnail" Component={Thumbnail}/>
+        </Routes>
         <Footer />
       </FlexV3rdGrow>
     </div>

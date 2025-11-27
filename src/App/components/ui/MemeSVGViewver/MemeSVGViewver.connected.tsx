@@ -16,9 +16,7 @@ const MemeSVGViewer :React.FC<IMemeSVGViewerProps> = ({basePath=''}) => {
   return (
         <Msvg 
         basePath = {basePath} 
-        image={images.find((img) => {
-          
-          return img.id === current.imageId})}
+        image={images.find((img) => img.id === current.imageId)}
         meme={current} 
         />
   );
