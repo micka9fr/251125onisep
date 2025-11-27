@@ -16,14 +16,26 @@ const initialState:IRessourcesState = {
 const ressources = createSlice({
   name: 'ressources',
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers(builder){
+    builder.addCase(loadRessources.fulfilled,(state, action)=>{
+        state.memes = action.payload.memes;
+        state.images = action.payload.images;
+    });
+  }
 });
 
 //export const {} = ressources.actions
 
 export const loadRessources = createAsyncThunk ('ressources/load', async()=>{
-    const pri = await fetch(`${REST_ADR}${REST_RESSOURCES.images}`);
-    return await pri.json();
+    const pri = fetch(`${REST_ADR}${REST_RESSOURCES.memes}`);
+    const prm = fetch(`${REST_ADR}${REST_RESSOURCES.images}`);
+
+    const prAll = await Promise.all([pri,prm]);
+
+    return { memes: await prAll[0].json(), images: await prAll[1].json() };
 });
 
-export default ressources.reducer
+const ressourcesReducer = ressources.reducer
+
+export default ressourcesReducer

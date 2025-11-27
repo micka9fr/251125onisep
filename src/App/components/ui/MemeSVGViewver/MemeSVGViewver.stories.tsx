@@ -1,5 +1,5 @@
 /* eslint-disable */
-import MemeSVGViewver from './MemeSVGViewver';
+import MemeSVGViewver from './MemeSVGViewver.connected';
 
 export default {
   title: "MemeSVGViewver",
